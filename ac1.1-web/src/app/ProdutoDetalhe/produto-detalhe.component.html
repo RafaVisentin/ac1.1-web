@@ -1,0 +1,27 @@
+<div class="container mt-4">
+    <div *ngIf="produto; else notFound">
+      <h2>{{ produto.nome }}</h2>
+      <p><strong>Preço:</strong> R$ {{ produto.preco.toFixed(2) }}</p>
+      <p><strong>Descrição:</strong> {{ produto.descricao }}</p>
+      <p>
+        <strong>Disponibilidade:</strong> 
+        <span [ngClass]="{'text-success': produto.emEstoque, 'text-danger': !produto.emEstoque}">          {{ produto.emEstoque ? 'Em estoque' : 'Esgotado' }}
+        </span>
+      </p>
+      <button 
+        class="btn btn-primary"
+        [disabled]="!produto.emEstoque"
+        [ngClass]="{'btn-secondary': !produto.emEstoque}"
+      >
+        Adicionar ao Carrinho
+      </button>
+      <a routerLink="/produtos" class="btn btn-link">Voltar para produtos</a>
+    </div>
+  
+    <ng-template #notFound>
+      <div class="alert alert-danger">
+        Produto não encontrado
+      </div>
+      <a routerLink="/produtos" class="btn btn-link">Voltar para produtos</a>
+    </ng-template>
+</div>

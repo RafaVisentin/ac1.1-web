@@ -1,0 +1,19 @@
+<div class="container mt-4">
+    <button class="btn btn-primary mb-3" (click)="toggleBanner()">
+      {{ showBanner ? 'Ocultar Banner' : 'Mostrar Banner' }}
+    </button>
+  
+    <div *ngIf="showBanner" class="banner mb-4 p-4 bg-warning text-center"> 
+      <h2>Promoção Especial!</h2>
+      <p>Descontos de até 50% em produtos selecionados</p>
+    </div>
+
+<div class="container mt-5">
+    <div class="jumbotron">
+      <h1 class="display-4">Loja Virtual</h1>
+      <p class="lead">Bem-vindo à nossa loja!</p>
+      <hr class="my-4">
+      <p>Confira nossos produtos incríveis.</p>
+      <a class="btn btn-primary btn-lg" href="/produtos" role="button">Ver Produtos</a>
+    </div>
+  </div>

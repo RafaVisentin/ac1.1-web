@@ -1,0 +1,33 @@
+<div class="container mt-4">
+    <h2>Nossos Produtos</h2>
+    
+    <div *ngIf="produtos.length === 0" class="alert alert-info">
+      Nenhum produto disponível no momento
+    </div>
+  
+    <div class="row">
+      <div *ngFor="let produto of produtos" class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ produto.nome }}</h5>
+            <p class="card-text">{{ produto.descricao }}</p>
+            <p class="card-text"><strong>Preço: R$ {{ produto.preco.toFixed(2) }}</strong></p>
+            <p class="card-text">
+              Estoque: 
+              <span [class.text-success]="produto.emEstoque" 
+                    [class.text-danger]="!produto.emEstoque">
+                {{ produto.emEstoque ? 'Disponível' : 'Esgotado' }}
+              </span>
+            </p>
+            <button 
+              [routerLink]="['/produto-detalhe', produto.id]" 
+              class="btn btn-primary"
+              [disabled]="!produto.emEstoque"
+              [class.btn-secondary]="!produto.emEstoque">
+              Comprar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
